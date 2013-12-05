@@ -1,19 +1,19 @@
 'use strict';
 
-angular.module('main', [])
-  config(function(TokenProvider) {
-    var baseUrl = document.URL.replace('example/demo.html', '');
+angular.module('main', ['linkedinOauth'])
+  .config(function(TokenProvider) {
+    // var baseUrl = document.URL.replace('example/demo.html', '');
 
     TokenProvider.extendConfig({
       clientId: 'tbd',
       clientSecret: '???',
-      redirectUri: baseUrl + 'src/oauth2callback.html',  // allow lunching demo from a mirror
-      scopes: ["r_fullprofile", "r_emailaddress", "r_network"]
+      redirectUri: 'http://localhost:9000/#/oauth',
+      scopes: ['r_fullprofile', 'r_emailaddress', 'r_network']
     });
-  }).
+  })
 
-  .controller('MainCtrl', ['$scope', 'LinkedIn', 'Distill',
-    function ($scope, LinkedIn, Distill) {
+  .controller('MainCtrl', ['$scope', '$rootScope', 'LinkedIn', 'Distill', 'Token',
+    function ($scope, $rootScope, LinkedIn, Distill, Token) {
 
       $scope.accessToken = Token.get();
 
@@ -37,6 +37,7 @@ angular.module('main', [])
             // Verify the token before setting it, to avoid the confused deputy problem.
             Token.verifyAsync(params.access_token).
               then(function(data) {
+                console.log('verified async', data);
                 $rootScope.$apply(function() {
                   $scope.accessToken = params.access_token;
                   $scope.expiresIn = params.expires_in;
@@ -44,12 +45,16 @@ angular.module('main', [])
                   Token.set(params.access_token);
                 });
               }, function() {
-                alert("Failed to verify token.")
+                window.alert('Failed to verify token.');
               });
 
           }, function() {
             // Failure getting token from popup.
-            alert("Failed to get token from popup.");
+            window.alert('Failed to get token from popup.');
+          },
+          function() {
+            // Error
+            console.log('something happened...', arguments);
           });
       };
 

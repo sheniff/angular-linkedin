@@ -6,9 +6,9 @@
  *
  * Guide: https://developer.linkedin.com/documents/authentication
  */
-angular.module('linkedinOauth', ['angularOauth']).
+angular.module('linkedinOauth', ['angularOauth'])
 
-  constant('LinkedInTokenVerifier', function(config, accessToken) {
+  .constant('LinkedInTokenVerifier', function(config, accessToken) {
     var $injector = angular.injector(['ng']);
     return $injector.invoke(['$http', '$rootScope', '$q', function($http, $rootScope, $q) {
       var deferred = $q.defer();
@@ -24,7 +24,7 @@ angular.module('linkedinOauth', ['angularOauth']).
         }}).
           success(function(data) {
             console.log('authorized', data);
-            if (data.audience == config.clientId) {
+            if (data.audience === config.clientId) {
               deferred.resolve(data);
             } else {
               deferred.reject({name: 'invalid_audience'});
@@ -43,9 +43,9 @@ angular.module('linkedinOauth', ['angularOauth']).
 
       return deferred.promise;
     }]);
-  }).
+  })
 
-  config(function(TokenProvider, LinkedInTokenVerifier) {
+  .config(function(TokenProvider, LinkedInTokenVerifier) {
     var generateRandomState = function() {
       // ToDo: To be done properly...
       return 'XxX';
