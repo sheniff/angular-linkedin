@@ -6,11 +6,17 @@ angular.module('distillDnaApp', [
   'ngRoute',
   'restangular',
   // scripts
+  'distillDnaServices',
   'distillDnaControllers'
 ]);
 
 angular.module('distillDnaControllers', [
   'main'
+]);
+
+angular.module('distillDnaServices', [
+  'linkedin',
+  'distill'
 ]);
 
 angular.module('distillDnaApp')
