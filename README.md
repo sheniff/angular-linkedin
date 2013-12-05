@@ -1,4 +1,4 @@
-distill-dna
-===========
+angular-linkedin
+================
 
-LinkedIn company talent profiler
+Angular Module to connect to LinkedIn API
