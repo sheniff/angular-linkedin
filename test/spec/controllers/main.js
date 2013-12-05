@@ -3,7 +3,7 @@
 describe('Controller: MainCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('distillDnaApp'));
+  beforeEach(module('angularLinkedin'));
 
   var MainCtrl,
     scope;

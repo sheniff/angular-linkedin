@@ -1,25 +1,25 @@
 'use strict';
 
-angular.module('distillDnaApp', [
+angular.module('angularLinkedin', [
   'ngCookies',
   'ngSanitize',
   'ngRoute',
   'restangular',
   // scripts
-  'distillDnaServices',
-  'distillDnaControllers'
+  'angularLinkedinServices',
+  'angularLinkedinControllers'
 ]);
 
-angular.module('distillDnaControllers', [
+angular.module('angularLinkedinControllers', [
   'main'
 ]);
 
-angular.module('distillDnaServices', [
+angular.module('angularLinkedinServices', [
   'linkedin',
   'distill'
 ]);
 
-angular.module('distillDnaApp')
+angular.module('angularLinkedin')
   .config(['$routeProvider', function ($routeProvider) {
     $routeProvider
       .when('/', {

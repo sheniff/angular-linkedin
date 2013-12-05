@@ -3,7 +3,7 @@
 describe('Service: Distill', function () {
 
   // load the service's module
-  beforeEach(module('distillDnaApp'));
+  beforeEach(module('angularLinkedin'));
 
   // instantiate service
   var Distill;
