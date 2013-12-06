@@ -46,11 +46,21 @@ angular.module('linkedin', [])
         init(key, params);
       },
 
+      logout: function() {
+        var response = $q.defer();
+
+        In.User.logout(function() {
+          response.resolve();
+        }, this);
+
+        return response.promise;
+      },
+
       // Events
       onAuthorized: function() {
         var response = $q.defer();
 
-        In.Event.on(In, 'auth', function() {
+        In.Event.onOnce(In, 'auth', function() {
           response.resolve();
         }, this);
 

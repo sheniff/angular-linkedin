@@ -11,6 +11,16 @@ angular.module('main', [])
         $scope.authenticated = LinkedIn.isAuthorized();
       });
 
+      $scope.logout = function() {
+        LinkedIn.logout().then(function() {
+          $scope.authenticated = LinkedIn.isAuthorized();
+
+          LinkedIn.onAuthorized().then(function() {
+            $scope.authenticated = LinkedIn.isAuthorized();
+          });
+        });
+      };
+
       $scope.runPoC = function() {
         LinkedIn.me().then(function(data) {
           console.log('me!', data);
