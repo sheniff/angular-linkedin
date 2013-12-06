@@ -29,10 +29,6 @@ angular.module('angularLinkedin')
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/oauth', {
-        templateUrl: 'views/oauth2callback.html',
-        controller: 'CallbackCtrl'
-      })
       .otherwise({
         redirectTo: '/'
       });
