@@ -1,26 +1,18 @@
 <div class="header">
   <h3 class="text-muted">Angular LinkedIn</h3>
+
+  <div class="">
+    <script type="in/Login">
+      Hello, <?js= firstName ?> <?js= lastName ?>.
+    </script>
+    <span ng-show="authenticated">Log out</span>
+  </div>
 </div>
 
 <div class="row marketing">
   <div>
-    <input type="checkbox" id="askApproval" ng-model="askApproval" />
-    <label for="askApproval">Always ask me for approval (even if I've already given it)</label>
-    <div>
-      <button ng-click="authenticate()">Authenticate</button>
-    </div>
-
-    <div ng-show="accessToken" style="display: none">
+    <div ng-show="authenticated">
       <h1>You're authenticated!</h1>
-
-      <h2>Access token</h2>
-      <pre>{{accessToken}}</pre>
-
-      <div ng-show="expiresIn">
-        <h2>Expiry</h2>
-        <p>Expires in {{expiresIn}} seconds.</p>
-      </div>
-
       <div>
         <button ng-click="runPoC()">Run PoC</button>
       </div>

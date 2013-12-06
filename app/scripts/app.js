@@ -19,6 +19,9 @@ angular.module('angularLinkedinServices', [
   'distill'
 ]);
 
+// Global API Key definition
+angular.module('angularLinkedin').value('LinkedInAPIKey', 't306b65wael0');
+
 angular.module('angularLinkedin')
   .config(['$routeProvider', function ($routeProvider) {
     $routeProvider

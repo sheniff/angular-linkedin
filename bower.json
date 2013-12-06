@@ -10,8 +10,7 @@
     "angular-cookies": "~1.2.0",
     "angular-sanitize": "~1.2.0",
     "angular-route": "~1.2.0",
-    "restangular": "latest",
-    "angular-oauth": "latest"
+    "restangular": "latest"
   },
   "devDependencies": {
     "angular-mocks": "~1.2.0",
